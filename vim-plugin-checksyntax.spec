@@ -9,6 +9,7 @@ Source0:	https://github.com/tomtom/checksyntax_vim/archive/%{version}/%{plugin}-
 # Source0-md5:	235de7ae32b861262d74c4bf0212da90
 URL:		https://github.com/tomtom/checksyntax_vim
 Requires:	vim-rt >= 4:7.2.170
+Requires(post,postun):	vim
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,6 +34,12 @@ gzip -9nf $RPM_BUILD_ROOT%{_vimdatadir}/doc/checksyntax.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+vim -c "helptags %{_vimdatadir}/doc" -c "q"
+
+%postun
+vim -c "helptags %{_vimdatadir}/doc" -c "q"
 
 %files
 %defattr(644,root,root,755)

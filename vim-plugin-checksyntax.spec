@@ -36,10 +36,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_vimdatadir}/doc/checksyntax.txt
 rm -rf $RPM_BUILD_ROOT
 
 %post
-vim -c "helptags %{_vimdatadir}/doc" -c "q"
+echo 'helptags %{_vimdatadir}/doc' | vim -e -s -V0 -R -n --noplugin
 
 %postun
-vim -c "helptags %{_vimdatadir}/doc" -c "q"
+echo 'helptags %{_vimdatadir}/doc' | vim -e -s -V0 -R -n --noplugin
 
 %files
 %defattr(644,root,root,755)

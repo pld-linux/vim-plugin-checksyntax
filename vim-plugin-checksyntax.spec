@@ -2,7 +2,7 @@
 Summary:	Check a file's syntax when saving a file (PHP, Ruby, Tex ...) with Vim
 Name:		vim-plugin-%{plugin}
 Version:	2.03
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Editors/Vim
 Source0:	https://github.com/tomtom/checksyntax_vim/archive/%{version}/%{plugin}-%{version}.tar.gz

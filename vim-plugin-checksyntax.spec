@@ -1,12 +1,12 @@
 %define		plugin	checksyntax
 Summary:	Check a file's syntax when saving a file (PHP, Ruby, Tex ...) with Vim
 Name:		vim-plugin-%{plugin}
-Version:	2.03
-Release:	2
+Version:	5.00
+Release:	1
 License:	GPL
 Group:		Applications/Editors/Vim
 Source0:	https://github.com/tomtom/checksyntax_vim/archive/%{version}/%{plugin}-%{version}.tar.gz
-# Source0-md5:	235de7ae32b861262d74c4bf0212da90
+# Source0-md5:	21bccae94504f83c6895fdcf16f94eb2
 URL:		https://github.com/tomtom/checksyntax_vim
 Requires:	vim-rt >= 4:7.2.170
 Requires(post,postun):	vim
@@ -28,7 +28,7 @@ to navigate the list of syntax errors.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_vimdatadir}
-cp -a autoload doc plugin $RPM_BUILD_ROOT%{_vimdatadir}
+cp -a autoload compiler doc plugin $RPM_BUILD_ROOT%{_vimdatadir}
 
 gzip -9nf $RPM_BUILD_ROOT%{_vimdatadir}/doc/checksyntax.txt
 
@@ -43,8 +43,10 @@ echo 'helptags %{_vimdatadir}/doc' | vim -e -s -V0 -R -n --noplugin
 
 %files
 %defattr(644,root,root,755)
-%doc README CHANGES.TXT
-%{_vimdatadir}/autoload/*.vim
+%doc README CHANGES.TXT LICENSE.TXT
+%{_vimdatadir}/autoload/airline
+%{_vimdatadir}/autoload/checksyntax.vim
 %{_vimdatadir}/autoload/checksyntax
+%{_vimdatadir}/compiler/checksyntax
 %{_vimdatadir}/doc/checksyntax.txt*
 %{_vimdatadir}/plugin/checksyntax.vim
